@@ -1,0 +1,95 @@
+.shelf {
+    min-height: 100vh;
+    padding: 32px;
+    background: linear-gradient(180deg, #1f1f1f 0%, #121212 360px);
+    color: #fff;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.heading {
+    margin: 0 0 20px;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    padding: 14px;
+    border-radius: 8px;
+    background: #181818;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+.card:hover {
+    background: #282828;
+}
+
+/* Album cover */
+.cover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #1db954, #0b3d22);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+}
+
+/* Different cover colours, repeating every 5 albums */
+.card:nth-child(5n + 2) .cover { background: linear-gradient(135deg, #e91e63, #4a0d2a); }
+.card:nth-child(5n + 3) .cover { background: linear-gradient(135deg, #7c4dff, #1e0f4d); }
+.card:nth-child(5n + 4) .cover { background: linear-gradient(135deg, #ff9800, #5c2600); }
+.card:nth-child(5n + 5) .cover { background: linear-gradient(135deg, #00bcd4, #003b45); }
+
+/* Green play button, hidden until hover */
+.cover::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #1ed760
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M8 5v14l11-7z'/></svg>")
+    center / 20px no-repeat;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.card:hover .cover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+.cover:hover::after {
+    transform: scale(1.06);
+}
+
+/* Text */
+.title {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* long names end with … */
+    text-transform: capitalize;
+}
+
+.meta {
+    margin: 0;
+    font-size: 13px;
+    color: #a7a7a7;
+}
