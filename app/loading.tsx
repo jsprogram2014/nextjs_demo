@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loader = () => {
+const Loading = () => {
   return (
     <div>
       Loader for when customers trying to fetch data and we need to show
